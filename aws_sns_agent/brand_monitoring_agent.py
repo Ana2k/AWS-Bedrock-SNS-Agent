@@ -173,7 +173,7 @@ def analyze_brand_sentiment(content: str, brand_name: str) -> str:
         
         # Call Bedrock model
         response = bedrock.invoke_model(
-            modelId="anthropic.claude-3-7-sonnet-20250219-v1:0",
+            modelId="us.anthropic.claude-3-5-sonnet-20241022-v2:0",
             body=json.dumps({
                 "anthropic_version": "bedrock-2023-05-31",
                 "max_tokens": 300,
@@ -359,12 +359,16 @@ if __name__ == '__main__':
 
     # --- Step 2: Create the Brand Monitoring Agent ---
     print("Initializing Bedrock model...")
+    
+    # Set AWS credentials for boto3
+    os.environ["AWS_ACCESS_KEY_ID"] = os.getenv("AWS_ACCESS_KEY_ID")
+    os.environ["AWS_SECRET_ACCESS_KEY"] = os.getenv("AWS_SECRET_ACCESS_KEY")
+    os.environ["AWS_SESSION_TOKEN"] = os.getenv("AWS_SESSION_TOKEN")
+    os.environ["AWS_DEFAULT_REGION"] = region
+    
     llm = LLM(
-        model="bedrock/anthropic.claude-3-7-sonnet-20250219-v1:0",
-        temperature=0.1,
-        api_key=os.getenv("AWS_ACCESS_KEY_ID"),
-        api_secret=os.getenv("AWS_SECRET_ACCESS_KEY"),
-        api_url=f"https://bedrock-runtime.{region}.amazonaws.com"
+        model="bedrock/us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+        temperature=0.1
     )
 
     print("Creating the brand monitoring agent with all tools...")
