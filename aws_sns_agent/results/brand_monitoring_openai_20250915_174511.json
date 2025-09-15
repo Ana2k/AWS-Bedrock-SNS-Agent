@@ -1,0 +1,33 @@
+{
+  "brand_name": "OpenAI",
+  "timestamp": "2025-09-15T17:45:11.216084",
+  "search_results": [
+    {
+      "title": "OpenAI Announces New Features",
+      "link": "https://example.com/openai-news",
+      "snippet": "OpenAI has announced new features for their AI platform..."
+    },
+    {
+      "title": "OpenAI Partnership with Microsoft",
+      "link": "https://example.com/openai-microsoft",
+      "snippet": "Microsoft and OpenAI have extended their partnership..."
+    }
+  ],
+  "scraped_data": [],
+  "sentiment_analysis": {
+    "sentiment_score": 0.8,
+    "sentiment_label": "positive",
+    "explanation": "Overall positive sentiment with mentions of new features and partnerships"
+  },
+  "report_data": {},
+  "metadata": {
+    "test": true,
+    "source": "sample_data"
+  },
+  "summary": {
+    "total_search_results": 2,
+    "total_scraped_items": 0,
+    "has_sentiment_analysis": true,
+    "has_report": false
+  }
+}

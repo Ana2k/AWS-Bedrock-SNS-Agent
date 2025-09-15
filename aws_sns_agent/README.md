@@ -1,10 +1,10 @@
-# Brand Monitoring Agent with CrewAI @tool Decorators
+# 🎯 Brand Monitoring System - Complete Application Suite
 
-A comprehensive brand monitoring system using CrewAI with `@tool` decorators, featuring AWS Bedrock integration, BrightData web scraping, and intelligent sentiment analysis.
+A comprehensive brand monitoring system using CrewAI with `@tool` decorators, featuring AWS Bedrock integration, BrightData web scraping, intelligent sentiment analysis, and a **modern web frontend** for real-time result visualization.
 
 ## 🎯 Project Status: FULLY FUNCTIONAL ✅
 
-**All systems are working perfectly!** The LLM is fully operational and all components have been tested and verified.
+**All systems are working perfectly!** The LLM is fully operational, the web frontend is ready, and all components have been tested and verified.
 
 ## Overview
 
@@ -14,11 +14,66 @@ This project provides a complete brand monitoring solution with:
 - **Intelligent Scraping**: Content extraction with mock data fallbacks
 - **Sentiment Analysis**: AI-powered brand perception analysis
 - **Comprehensive Reporting**: Detailed insights and recommendations
+- **🌐 Web Frontend**: Real-time dashboard for result visualization
+- **💾 Data Storage**: Automatic saving and management of results
+- **📊 Analytics**: Interactive charts and data exploration
 
-## Architecture
+## 🏗️ Application Architecture
 
 ```
-User Query → Brand Monitoring Crew → @tool Functions → Bedrock LLM → Structured Response
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Web Frontend  │    │  Brand Monitoring │    │   Data Storage  │
+│   (Flask App)   │◄──►│     Agent        │◄──►│   (JSON Files)  │
+│                 │    │   (CrewAI)       │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Dashboard     │    │   AWS Bedrock    │    │   Results API   │
+│   Visualization │    │   (Claude 3.5)   │    │   Endpoints     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
+
+## 📁 Complete File Structure
+
+```
+aws_sns_agent/
+├── 🎯 Core Application Files
+│   ├── brand_monitoring_agent.py              # Original brand monitoring agent
+│   ├── brand_monitoring_agent_with_storage.py # Enhanced agent with data storage
+│   ├── standalone_brand_monitoring_agent.py   # Standalone version (outside brand-monitoring folder)
+│   ├── data_storage.py                        # Data storage utility for saving results
+│   └── start_demo.py                          # Demo startup script
+│
+├── 🌐 Frontend Application
+│   ├── frontend/
+│   │   ├── app.py                             # Flask web application
+│   │   └── templates/
+│   │       └── index.html                     # Dashboard HTML template
+│   └── results/                               # Generated results directory
+│
+├── 🧪 Testing & Demo Files
+│   ├── test-demo/                             # All test files organized here
+│   │   ├── standalone_tools.py                # Fixed BrightData tools
+│   │   ├── test_standalone_system.py          # System integration tests
+│   │   ├── test_llm_invocation.py             # LLM functionality tests
+│   │   ├── test_sentiment_analysis.py         # Sentiment analysis tests
+│   │   ├── test_working_model.py              # Working model verification
+│   │   └── COMPREHENSIVE_STATUS_REPORT.md     # Detailed test results
+│   └── anushka_aws_sns/
+│       └── lab1_py.py                         # AWS Bedrock reference implementation
+│
+├── 📊 Original Brand Monitoring System
+│   └── brand-monitoring/                      # Original system (untouched)
+│       └── brand_monitoring_flow/
+│           ├── src/brand_monitoring_app.py    # Original app
+│           ├── crews/                         # Platform-specific crews
+│           └── tools/custom_tool.py           # Original tools
+│
+└── 📚 Documentation
+    ├── README.md                              # This comprehensive guide
+    └── requirements.txt                       # Python dependencies
 ```
 
 ## Tools Available
@@ -52,25 +107,125 @@ BRIGHT_DATA_PASSWORD=your_brightdata_password
 BRIGHT_DATA_API_KEY=your_brightdata_api_key
 ```
 
-## Usage
+## 🚀 Quick Start Guide
 
-### Run the Agent
-
+### Option 1: Complete Demo (Recommended)
 ```bash
+# Start the complete demo with frontend
+python start_demo.py
+```
+This will:
+- Start the web frontend at http://localhost:5000
+- Provide options to run brand monitoring
+- Display results in real-time
+
+### Option 2: Enhanced Agent with Storage
+```bash
+# Run the enhanced agent that saves results
+python brand_monitoring_agent_with_storage.py
+```
+
+### Option 3: Original Agent
+```bash
+# Run the original brand monitoring agent
 python brand_monitoring_agent.py
 ```
 
-### Example Queries
+### Option 4: Standalone Version
+```bash
+# Run the standalone version (outside brand-monitoring folder)
+python standalone_brand_monitoring_agent.py
+```
+
+### Option 5: Frontend Only
+```bash
+# Start just the web frontend
+cd frontend
+python app.py
+```
+
+## 🌐 Web Frontend Features
+
+The web frontend provides a modern dashboard for brand monitoring results:
+
+### Dashboard Features:
+- **📊 Real-time Results**: View all brand monitoring results in one place
+- **🔍 Search & Filter**: Find specific brands or results quickly
+- **📱 Responsive Design**: Works on desktop, tablet, and mobile
+- **💾 Data Management**: Save, view, and delete results
+- **📈 Analytics**: Visual representation of brand monitoring data
+- **🔄 Auto-refresh**: Real-time updates when new results are added
+
+### API Endpoints:
+- `GET /api/results` - Get all results
+- `GET /api/results/<filename>` - Get specific result
+- `POST /api/save-result` - Save new result
+- `DELETE /api/delete-result/<filename>` - Delete result
+
+## 💾 Data Storage System
+
+The application includes a comprehensive data storage system:
+
+### Features:
+- **Automatic Saving**: Results are automatically saved to JSON files
+- **Metadata Tracking**: Timestamps, file sizes, and modification dates
+- **Error Handling**: Graceful handling of storage failures
+- **File Management**: Organized storage in the `results/` directory
+- **API Integration**: RESTful API for frontend integration
+
+### File Format:
+```json
+{
+  "brand_name": "OpenAI",
+  "timestamp": "2025-01-15T10:30:00",
+  "search_results": [...],
+  "scraped_data": [...],
+  "sentiment_analysis": {...},
+  "report_data": {...},
+  "summary": {
+    "total_search_results": 20,
+    "total_scraped_items": 5,
+    "has_sentiment_analysis": true,
+    "has_report": true
+  }
+}
+```
+
+## 📝 Example Queries
 
 - "Search for mentions of 'OpenAI' and analyze the sentiment"
 - "Generate a comprehensive brand monitoring report for 'Hugging Face'"
 - "What is the current sentiment around 'Anthropic' brand mentions?"
 - "Search for 'DeepSeek' mentions using both BrightData and DuckDuckGo"
 
+## 📋 File Purposes & Usage
+
+### Core Application Files:
+- **`brand_monitoring_agent.py`** - Original brand monitoring agent (working with rate limits)
+- **`brand_monitoring_agent_with_storage.py`** - Enhanced version that saves results to files
+- **`standalone_brand_monitoring_agent.py`** - Standalone version outside brand-monitoring folder
+- **`data_storage.py`** - Utility for saving/loading brand monitoring results
+- **`start_demo.py`** - Interactive demo script that starts frontend and provides options
+
+### Frontend Files:
+- **`frontend/app.py`** - Flask web application with REST API
+- **`frontend/templates/index.html`** - Modern dashboard with search, filtering, and data visualization
+
+### Testing Files:
+- **`test-demo/`** - All test files organized in one directory
+- **`test-demo/standalone_tools.py`** - Fixed BrightData tools with fallbacks
+- **`test-demo/test_*.py`** - Various test scripts for different components
+
+### Original System (Untouched):
+- **`brand-monitoring/`** - Original brand monitoring system (preserved as requested)
+
 ## Key Features
 
 - **Simple @tool Decorators**: Each function is a standalone tool
 - **Bedrock Integration**: Uses Claude 3.5 Sonnet for analysis
+- **Web Frontend**: Modern dashboard for result visualization
+- **Data Persistence**: Automatic saving of results to JSON files
+- **Rate Limit Handling**: Graceful handling of AWS Bedrock rate limits
 - **Multi-source Search**: BrightData + DuckDuckGo
 - **Sentiment Analysis**: AI-powered sentiment scoring
 - **Comprehensive Reports**: Detailed brand monitoring insights
