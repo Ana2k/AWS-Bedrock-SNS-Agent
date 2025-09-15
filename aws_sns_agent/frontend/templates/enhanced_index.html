@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Brand Monitoring Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .control-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .control-group input, .control-group select {
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .control-group input:focus, .control-group select:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .results-section {
+            padding: 30px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .result-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .result-card h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .result-content {
+            max-height: 300px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4facfe;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6c757d;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #4facfe;
+            border-bottom: 2px solid #4facfe;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .log-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+
+        .log-entry.success { color: #51cf66; }
+        .log-entry.error { color: #ff6b6b; }
+        .log-entry.warning { color: #ffd43b; }
+        .log-entry.info { color: #74c0fc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Enhanced Brand Monitoring Dashboard</h1>
+            <p>Real-time brand analysis with AWS Bedrock AI integration</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="brandName">Brand Name:</label>
+                <input type="text" id="brandName" placeholder="Enter brand name (e.g., OpenAI)" value="OpenAI">
+                
+                <label for="maxResults">Max Results:</label>
+                <select id="maxResults">
+                    <option value="5">5 results</option>
+                    <option value="10" selected>10 results</option>
+                    <option value="15">15 results</option>
+                    <option value="20">20 results</option>
+                </select>
+
+                <button class="btn" onclick="runBrandSearch()">🔍 Search Brand</button>
+                <button class="btn btn-success" onclick="runSentimentAnalysis()">🧠 Analyze Sentiment</button>
+                <button class="btn btn-danger" onclick="runFullAnalysis()">🚀 Full Analysis</button>
+            </div>
+
+            <div class="control-group">
+                <button class="btn" onclick="loadResults()">📊 Load Results</button>
+                <button class="btn" onclick="clearResults()">🗑️ Clear Results</button>
+                <button class="btn" onclick="exportResults()">📁 Export Results</button>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('dashboard')">📊 Dashboard</button>
+                <button class="tab" onclick="showTab('results')">📋 Results</button>
+                <button class="tab" onclick="showTab('logs')">📝 Logs</button>
+                <button class="tab" onclick="showTab('tests')">🧪 Test Results</button>
+            </div>
+
+            <div id="dashboard" class="tab-content active">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3 id="totalSearches">0</h3>
+                        <p>Total Searches</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="totalAnalyses">0</h3>
+                        <p>Sentiment Analyses</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="avgSentiment">0.0</h3>
+                        <p>Avg Sentiment</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="systemStatus">🟢</h3>
+                        <p>System Status</p>
+                    </div>
+                </div>
+
+                <div id="statusMessages"></div>
+            </div>
+
+            <div id="results" class="tab-content">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Processing your request...</p>
+                </div>
+                <div id="resultsContainer" class="results-grid"></div>
+            </div>
+
+            <div id="logs" class="tab-content">
+                <div class="log-container" id="logContainer">
+                    <div class="log-entry info">System initialized. Ready for brand monitoring tasks.</div>
+                </div>
+            </div>
+
+            <div id="tests" class="tab-content">
+                <div id="testResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentResults = [];
+        let logs = [];
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}`;
+            logs.push({ message: logEntry, type });
+            
+            const logContainer = document.getElementById('logContainer');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = logEntry;
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function showStatus(message, type = 'info') {
+            const statusContainer = document.getElementById('statusMessages');
+            const status = document.createElement('div');
+            status.className = `status ${type}`;
+            status.textContent = message;
+            statusContainer.appendChild(status);
+            
+            setTimeout(() => {
+                status.remove();
+            }, 5000);
+        }
+
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        function showLoading(show = true) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        async function runBrandSearch() {
+            const brandName = document.getElementById('brandName').value;
+            const maxResults = document.getElementById('maxResults').value;
+            
+            if (!brandName.trim()) {
+                showStatus('Please enter a brand name', 'error');
+                return;
+            }
+
+            showLoading(true);
+            log(`Starting brand search for: ${brandName}`, 'info');
+            
+            try {
+                const response = await fetch('/api/search-brand', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        brand_name: brandName,
+                        max_results: parseInt(maxResults)
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`Found ${result.data.total_results} mentions for ${brandName}`, 'success');
+                    log(`Search completed: ${result.data.total_results} results found`, 'success');
+                    displayResult('Brand Search Results', result.data);
+                } else {
+                    showStatus(`Search failed: ${result.error}`, 'error');
+                    log(`Search failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                log(`Search error: ${error.message}`, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function runSentimentAnalysis() {
+            const brandName = document.getElementById('brandName').value;
+            
+            if (!brandName.trim()) {
+                showStatus('Please enter a brand name', 'error');
+                return;
+            }
+
+            showLoading(true);
+            log(`Starting sentiment analysis for: ${brandName}`, 'info');
+            
+            try {
+                const response = await fetch('/api/analyze-sentiment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        brand_name: brandName
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`Sentiment analysis completed for ${brandName}`, 'success');
+                    log(`Sentiment analysis completed: ${result.data.sentiment_analysis.sentiment_label}`, 'success');
+                    displayResult('Sentiment Analysis', result.data);
+                } else {
+                    showStatus(`Sentiment analysis failed: ${result.error}`, 'error');
+                    log(`Sentiment analysis failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                log(`Sentiment analysis error: ${error.message}`, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function runFullAnalysis() {
+            const brandName = document.getElementById('brandName').value;
+            const maxResults = document.getElementById('maxResults').value;
+            
+            if (!brandName.trim()) {
+                showStatus('Please enter a brand name', 'error');
+                return;
+            }
+
+            showLoading(true);
+            log(`Starting full analysis for: ${brandName}`, 'info');
+            
+            try {
+                const response = await fetch('/api/full-analysis', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        brand_name: brandName,
+                        max_results: parseInt(maxResults)
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`Full analysis completed for ${brandName}`, 'success');
+                    log(`Full analysis completed successfully`, 'success');
+                    displayResult('Full Brand Analysis Report', result.data);
+                } else {
+                    showStatus(`Full analysis failed: ${result.error}`, 'error');
+                    log(`Full analysis failed: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+                log(`Full analysis error: ${error.message}`, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function displayResult(title, data) {
+            const container = document.getElementById('resultsContainer');
+            const card = document.createElement('div');
+            card.className = 'result-card';
+            
+            card.innerHTML = `
+                <h3>${title}</h3>
+                <div class="result-content">${JSON.stringify(data, null, 2)}</div>
+            `;
+            
+            container.appendChild(card);
+            currentResults.push({ title, data, timestamp: new Date() });
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('totalSearches').textContent = currentResults.length;
+            
+            const sentimentResults = currentResults.filter(r => r.data.sentiment_analysis);
+            document.getElementById('totalAnalyses').textContent = sentimentResults.length;
+            
+            if (sentimentResults.length > 0) {
+                const avgSentiment = sentimentResults.reduce((sum, r) => {
+                    return sum + (r.data.sentiment_analysis.sentiment_score || 0);
+                }, 0) / sentimentResults.length;
+                document.getElementById('avgSentiment').textContent = avgSentiment.toFixed(2);
+            }
+        }
+
+        async function loadResults() {
+            try {
+                const response = await fetch('/api/results');
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`Loaded ${result.results.length} saved results`, 'success');
+                    log(`Loaded ${result.results.length} saved results`, 'info');
+                    
+                    const container = document.getElementById('resultsContainer');
+                    container.innerHTML = '';
+                    
+                    result.results.forEach(item => {
+                        displayResult(`Saved Result: ${item.brand_name || 'Unknown'}`, item);
+                    });
+                } else {
+                    showStatus(`Failed to load results: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus(`Error loading results: ${error.message}`, 'error');
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('resultsContainer').innerHTML = '';
+            currentResults = [];
+            updateStats();
+            showStatus('Results cleared', 'info');
+            log('Results cleared', 'info');
+        }
+
+        function exportResults() {
+            if (currentResults.length === 0) {
+                showStatus('No results to export', 'warning');
+                return;
+            }
+
+            const dataStr = JSON.stringify(currentResults, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `brand_monitoring_results_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            showStatus('Results exported successfully', 'success');
+            log('Results exported to JSON file', 'success');
+        }
+
+        // Load test results on page load
+        async function loadTestResults() {
+            try {
+                const response = await fetch('/api/test-results');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const container = document.getElementById('testResults');
+                    container.innerHTML = `
+                        <div class="result-card">
+                            <h3>🧪 System Test Results</h3>
+                            <div class="result-content">${JSON.stringify(result.data, null, 2)}</div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                log(`Failed to load test results: ${error.message}`, 'error');
+            }
+        }
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            log('Dashboard initialized successfully', 'success');
+            loadTestResults();
+        });
+    </script>
+</body>
+</html>

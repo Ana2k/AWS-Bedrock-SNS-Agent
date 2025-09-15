@@ -1,0 +1,66 @@
+{
+  "brand_name": "OpenAI",
+  "search_results": {
+    "brand_name": "OpenAI",
+    "total_results": 9,
+    "search_results": [
+      {
+        "title": "Announcing OpenAI Grove",
+        "link": "https://openai.com/index/openai-grove/",
+        "snippet": ""
+      },
+      {
+        "title": "A joint statement from OpenAI and Microsoft",
+        "link": "https://openai.com/index/joint-statement-from-openai-and-microsoft/",
+        "snippet": ""
+      },
+      {
+        "title": "Statement on OpenAI's Nonprofit and PBC",
+        "link": "https://openai.com/index/statement-on-openai-nonprofit-and-pbc/",
+        "snippet": ""
+      },
+      {
+        "title": "OpenAI",
+        "link": "https://en.wikipedia.org/wiki/OpenAI",
+        "snippet": ""
+      },
+      {
+        "title": "A joint statement from Microsoft and OpenAI",
+        "link": "https://blogs.microsoft.com/blog/2025/09/11/a-joint-statement-from-microsoft-and-openai/",
+        "snippet": ""
+      },
+      {
+        "title": "Why OpenAI's solution to AI hallucinations would kill ...",
+        "link": "https://theconversation.com/why-openais-solution-to-ai-hallucinations-would-kill-chatgpt-tomorrow-265107",
+        "snippet": ""
+      },
+      {
+        "title": "Oracle, OpenAI Sign $300 Billion Cloud Deal",
+        "link": "https://www.wsj.com/business/openai-oracle-sign-300-billion-computing-deal-among-biggest-in-history-ff27c8fe",
+        "snippet": ""
+      },
+      {
+        "title": "OpenAI Is Secretly Holding Back Their Most Powerful Model ...",
+        "link": "https://www.youtube.com/watch?v=atoxryOIgXA",
+        "snippet": ""
+      },
+      {
+        "title": "A People-First AI Fund: $50M to support nonprofits",
+        "link": "https://openai.com/index/people-first-ai-fund/",
+        "snippet": ""
+      }
+    ]
+  },
+  "sentiment_analysis": {
+    "brand_name": "OpenAI",
+    "sentiment_analysis": {
+      "sentiment_score": 0.8,
+      "sentiment_label": "positive",
+      "explanation": "The content shows consistently positive sentiment towards OpenAI, highlighting their innovation, progress in AI safety, and positive reception from both the community and industry experts. Key positive phrases include 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'.",
+      "confidence": 0.9
+    },
+    "timestamp": "2025-09-15T18:12:25.652197"
+  },
+  "report": "\n# Brand Monitoring Report: OpenAI\n\n## Executive Summary\n- **Total Mentions Found**: 9\n- **Overall Sentiment**: Positive (Score: 0.80)\n- **Analysis Date**: 2025-09-15 18:12:25\n\n## Key Findings\n- Brand sentiment is **positive** with good online presence\n- Found 9 mentions across web sources\n\n## Top Mentions\n1. **Announcing OpenAI Grove**\n   - URL: https://openai.com/index/openai-grove/\n   - Snippet: ...\n\n2. **A joint statement from OpenAI and Microsoft**\n   - URL: https://openai.com/index/joint-statement-from-openai-and-microsoft/\n   - Snippet: ...\n\n3. **Statement on OpenAI's Nonprofit and PBC**\n   - URL: https://openai.com/index/statement-on-openai-nonprofit-and-pbc/\n   - Snippet: ...\n\n4. **OpenAI**\n   - URL: https://en.wikipedia.org/wiki/OpenAI\n   - Snippet: ...\n\n5. **A joint statement from Microsoft and OpenAI**\n   - URL: https://blogs.microsoft.com/blog/2025/09/11/a-joint-statement-from-microsoft-and-openai/\n   - Snippet: ...\n\n## Sentiment Analysis Details\n- **Score**: 0.8\n- **Label**: positive\n- **Explanation**: The content shows consistently positive sentiment towards OpenAI, highlighting their innovation, progress in AI safety, and positive reception from both the community and industry experts. Key positive phrases include 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'.\n- **Confidence**: 0.9\n\n## Recommendations\n- Continue current brand strategy - positive sentiment detected\n- Consider amplifying positive mentions\n",
+  "timestamp": "2025-09-15T18:12:25.654470"
+}
