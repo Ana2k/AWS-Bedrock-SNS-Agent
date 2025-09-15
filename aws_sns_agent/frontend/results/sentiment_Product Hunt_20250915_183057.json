@@ -1,0 +1,11 @@
+{
+  "brand_name": "Product Hunt",
+  "sentiment_analysis": {
+    "sentiment_score": 0.8,
+    "sentiment_label": "positive",
+    "explanation": "The content shows strongly positive sentiment towards Product Hunt, highlighting their innovation in AI technology, positive community reception, and recognition from industry experts. Key positive phrases include 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'.",
+    "confidence": 0.9
+  },
+  "timestamp": "2025-09-15T18:30:57.451945",
+  "filename": "sentiment_Product Hunt_20250915_183057.json"
+}

@@ -1,0 +1,11 @@
+{
+  "brand_name": "OpenAI",
+  "sentiment_analysis": {
+    "sentiment_score": 0.8,
+    "sentiment_label": "positive",
+    "explanation": "The content shows consistently positive sentiment towards OpenAI, highlighting their innovation, progress in AI safety, and positive reception from both the community and industry experts. Key positive phrases include 'continues to innovate,' 'positive reception,' 'significant progress,' and 'receiving praise.'",
+    "confidence": 0.9
+  },
+  "timestamp": "2025-09-15T18:24:06.561040",
+  "filename": "sentiment_OpenAI_20250915_182406.json"
+}

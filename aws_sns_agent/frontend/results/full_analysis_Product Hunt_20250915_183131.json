@@ -1,0 +1,71 @@
+{
+  "brand_name": "Product Hunt",
+  "search_results": {
+    "brand_name": "Product Hunt",
+    "total_results": 10,
+    "search_results": [
+      {
+        "title": "My products",
+        "link": "https://www.producthunt.com/my/products",
+        "snippet": ""
+      },
+      {
+        "title": "Product Hunt \ud83d\ude38 (@ProductHunt) / ...",
+        "link": "https://x.com/producthunt",
+        "snippet": ""
+      },
+      {
+        "title": "How often should you launch on Product Hunt?",
+        "link": "https://www.producthunt.com/p/producthunt/how-often-should-you-launch-on-product-hunt",
+        "snippet": ""
+      },
+      {
+        "title": "About Product Hunt",
+        "link": "https://www.producthunt.com/about",
+        "snippet": ""
+      },
+      {
+        "title": "Product Hunt - Crunchbase Company Profile & Funding",
+        "link": "https://www.crunchbase.com/organization/product-hunt",
+        "snippet": ""
+      },
+      {
+        "title": "Forums",
+        "link": "https://www.producthunt.com/forums",
+        "snippet": ""
+      },
+      {
+        "title": "Product Hunt daily launch history",
+        "link": "https://hunted.space/history",
+        "snippet": ""
+      },
+      {
+        "title": "Product Hunt upvote buy or sell",
+        "link": "https://www.facebook.com/groups/612366049190855/",
+        "snippet": ""
+      },
+      {
+        "title": "Product Hunt Reviews 59",
+        "link": "https://ie.trustpilot.com/review/producthunt.com",
+        "snippet": ""
+      },
+      {
+        "title": "Best products of September 2025",
+        "link": "https://www.producthunt.com/products",
+        "snippet": ""
+      }
+    ]
+  },
+  "sentiment_analysis": {
+    "brand_name": "Product Hunt",
+    "sentiment_analysis": {
+      "sentiment_score": 0.8,
+      "sentiment_label": "positive",
+      "explanation": "The content shows strong positive sentiment with phrases like 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'. The mentions focus on Product Hunt's achievements in AI technology and positive industry recognition.",
+      "confidence": 0.9
+    },
+    "timestamp": "2025-09-15T18:31:31.020167"
+  },
+  "report": "\n# Brand Monitoring Report: Product Hunt\n\n## Executive Summary\n- **Total Mentions Found**: 10\n- **Overall Sentiment**: Positive (Score: 0.80)\n- **Analysis Date**: 2025-09-15 18:31:31\n\n## Key Findings\n- Brand sentiment is **positive** with good online presence\n- Found 10 mentions across web sources\n\n## Top Mentions\n1. **My products**\n   - URL: https://www.producthunt.com/my/products\n   - Snippet: ...\n\n2. **Product Hunt \ud83d\ude38 (@ProductHunt) / ...**\n   - URL: https://x.com/producthunt\n   - Snippet: ...\n\n3. **How often should you launch on Product Hunt?**\n   - URL: https://www.producthunt.com/p/producthunt/how-often-should-you-launch-on-product-hunt\n   - Snippet: ...\n\n4. **About Product Hunt**\n   - URL: https://www.producthunt.com/about\n   - Snippet: ...\n\n5. **Product Hunt - Crunchbase Company Profile & Funding**\n   - URL: https://www.crunchbase.com/organization/product-hunt\n   - Snippet: ...\n\n## Sentiment Analysis Details\n- **Score**: 0.8\n- **Label**: positive\n- **Explanation**: The content shows strong positive sentiment with phrases like 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'. The mentions focus on Product Hunt's achievements in AI technology and positive industry recognition.\n- **Confidence**: 0.9\n\n## Recommendations\n- Continue current brand strategy - positive sentiment detected\n- Consider amplifying positive mentions\n",
+  "timestamp": "2025-09-15T18:31:31.021302"
+}

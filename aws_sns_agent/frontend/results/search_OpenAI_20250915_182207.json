@@ -1,0 +1,36 @@
+{
+  "brand_name": "OpenAI",
+  "search_results": {
+    "brand_name": "OpenAI",
+    "total_results": 5,
+    "search_results": [
+      {
+        "title": "Announcing OpenAI Grove",
+        "link": "https://openai.com/index/openai-grove/",
+        "snippet": ""
+      },
+      {
+        "title": "A joint statement from OpenAI and Microsoft",
+        "link": "https://openai.com/index/joint-statement-from-openai-and-microsoft/",
+        "snippet": ""
+      },
+      {
+        "title": "Statement on OpenAI's Nonprofit and PBC",
+        "link": "https://openai.com/index/statement-on-openai-nonprofit-and-pbc/",
+        "snippet": ""
+      },
+      {
+        "title": "OpenAI",
+        "link": "https://en.wikipedia.org/wiki/OpenAI",
+        "snippet": ""
+      },
+      {
+        "title": "\u30aa\u30e9\u30af\u30eb\u3001OpenAI\u306844\u5146\u5186\u306e\u30af\u30e9\u30a6\u30c9\u5951\u7d04 \u7c73\u7d19\u5831\u9053",
+        "link": "https://www.nikkei.com/article/DGXZQOUC1185E0R10C25A9000000/",
+        "snippet": ""
+      }
+    ]
+  },
+  "timestamp": "2025-09-15T18:22:07.061823",
+  "filename": "search_OpenAI_20250915_182207.json"
+}

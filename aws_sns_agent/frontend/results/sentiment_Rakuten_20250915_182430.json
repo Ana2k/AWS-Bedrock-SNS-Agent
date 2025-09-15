@@ -1,0 +1,11 @@
+{
+  "brand_name": "Rakuten",
+  "sentiment_analysis": {
+    "sentiment_score": 0.8,
+    "sentiment_label": "positive",
+    "explanation": "The content shows strongly positive sentiment towards Rakuten, highlighting their innovation in AI technology and receiving praise from experts. Key positive phrases include 'continues to innovate', 'positive reception', 'significant progress', and 'receiving praise'.",
+    "confidence": 0.9
+  },
+  "timestamp": "2025-09-15T18:24:30.765051",
+  "filename": "sentiment_Rakuten_20250915_182430.json"
+}
