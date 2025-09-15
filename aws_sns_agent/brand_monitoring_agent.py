@@ -173,7 +173,7 @@ def analyze_brand_sentiment(content: str, brand_name: str) -> str:
         
         # Call Bedrock model
         response = bedrock.invoke_model(
-            modelId="us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+            modelId="anthropic.claude-3-5-sonnet-20241022-v2:0",
             body=json.dumps({
                 "anthropic_version": "bedrock-2023-05-31",
                 "max_tokens": 300,
@@ -367,7 +367,7 @@ if __name__ == '__main__':
     os.environ["AWS_DEFAULT_REGION"] = region
     
     llm = LLM(
-        model="bedrock/us.anthropic.claude-3-5-sonnet-20241022-v2:0",
+        model="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0",
         temperature=0.1
     )
 
