@@ -100,17 +100,20 @@ def analyze_sentiment():
         filename = f"sentiment_{brand_name}_{timestamp}.json"
         file_path = os.path.join(RESULTS_DIR, filename)
         
+        # Ensure the data structure is correct for the frontend
+        formatted_data = {
+            'brand_name': brand_name,
+            'sentiment_analysis': result_data.get('sentiment_analysis', {}),
+            'timestamp': datetime.now().isoformat(),
+            'filename': filename
+        }
+        
         with open(file_path, 'w') as f:
-            json.dump({
-                'brand_name': brand_name,
-                'sentiment_analysis': result_data,
-                'timestamp': datetime.now().isoformat(),
-                'filename': filename
-            }, f, indent=2)
+            json.dump(formatted_data, f, indent=2)
         
         return jsonify({
             'success': True,
-            'data': result_data,
+            'data': formatted_data,
             'filename': filename
         })
         

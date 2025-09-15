@@ -277,6 +277,173 @@
         .log-entry.error { color: #ff6b6b; }
         .log-entry.warning { color: #ffd43b; }
         .log-entry.info { color: #74c0fc; }
+
+        /* Enhanced formatting styles */
+        .sentiment-display {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .sentiment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .sentiment-header h4 {
+            margin: 0;
+            color: #495057;
+        }
+
+        .sentiment-score {
+            font-size: 2em;
+            font-weight: bold;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sentiment-details {
+            display: grid;
+            gap: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .detail-row strong {
+            min-width: 100px;
+            color: #495057;
+        }
+
+        .explanation-text {
+            margin: 5px 0 0 0;
+            color: #6c757d;
+            line-height: 1.5;
+        }
+
+        .search-results {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+
+        .search-results h4 {
+            margin: 0 0 15px 0;
+            color: #495057;
+        }
+
+        .search-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .search-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .search-title {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .search-url {
+            margin-bottom: 8px;
+        }
+
+        .search-url a {
+            color: #4facfe;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .search-url a:hover {
+            text-decoration: underline;
+        }
+
+        .search-snippet {
+            color: #6c757d;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .full-analysis {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #6f42c1;
+        }
+
+        .full-analysis h4 {
+            margin: 0 0 20px 0;
+            color: #495057;
+        }
+
+        .analysis-summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .summary-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .report-section {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .report-section h5 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+
+        .report-content {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        .report-content h6 {
+            color: #495057;
+            margin: 15px 0 5px 0;
+            font-size: 1.1em;
+        }
+
+        .report-content strong {
+            color: #495057;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -542,14 +709,148 @@
             const card = document.createElement('div');
             card.className = 'result-card';
             
+            // Format the data based on the type of result
+            let formattedContent = '';
+            
+            if (title.includes('Sentiment Analysis')) {
+                formattedContent = formatSentimentAnalysis(data);
+            } else if (title.includes('Brand Search')) {
+                formattedContent = formatSearchResults(data);
+            } else if (title.includes('Full Analysis')) {
+                formattedContent = formatFullAnalysis(data);
+            } else {
+                formattedContent = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            }
+            
             card.innerHTML = `
                 <h3>${title}</h3>
-                <div class="result-content">${JSON.stringify(data, null, 2)}</div>
+                <div class="result-content">${formattedContent}</div>
             `;
             
             container.appendChild(card);
             currentResults.push({ title, data, timestamp: new Date() });
             updateStats();
+        }
+
+        function formatSentimentAnalysis(data) {
+            if (data.sentiment_analysis) {
+                const analysis = data.sentiment_analysis;
+                const score = analysis.sentiment_score || 0;
+                const label = analysis.sentiment_label || 'unknown';
+                const confidence = analysis.confidence || 0;
+                const explanation = analysis.explanation || 'No explanation available';
+                
+                // Color coding based on sentiment
+                let scoreColor = '#6c757d'; // neutral
+                if (score > 0.3) scoreColor = '#28a745'; // positive
+                else if (score < -0.3) scoreColor = '#dc3545'; // negative
+                
+                return `
+                    <div class="sentiment-display">
+                        <div class="sentiment-header">
+                            <h4>Sentiment Analysis Results</h4>
+                            <div class="sentiment-score" style="color: ${scoreColor}; font-size: 1.5em; font-weight: bold;">
+                                ${score.toFixed(2)}
+                            </div>
+                        </div>
+                        <div class="sentiment-details">
+                            <div class="detail-row">
+                                <strong>Sentiment:</strong> 
+                                <span class="sentiment-label" style="color: ${scoreColor};">${label.toUpperCase()}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Confidence:</strong> 
+                                <span class="confidence-score">${(confidence * 100).toFixed(1)}%</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Explanation:</strong>
+                                <p class="explanation-text">${explanation}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        function formatSearchResults(data) {
+            if (data.search_results && data.search_results.length > 0) {
+                let html = `
+                    <div class="search-results">
+                        <h4>Found ${data.search_results.length} mentions</h4>
+                        <div class="search-list">
+                `;
+                
+                data.search_results.slice(0, 5).forEach((result, index) => {
+                    html += `
+                        <div class="search-item">
+                            <div class="search-title">${index + 1}. ${result.title || 'No title'}</div>
+                            <div class="search-url">
+                                <a href="${result.link}" target="_blank">${result.link}</a>
+                            </div>
+                            <div class="search-snippet">${result.snippet ? result.snippet.substring(0, 200) + '...' : 'No snippet available'}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+                return html;
+            }
+            return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+
+        function formatFullAnalysis(data) {
+            let html = `
+                <div class="full-analysis">
+                    <h4>Complete Brand Analysis Report</h4>
+            `;
+            
+            // Add sentiment analysis if available
+            if (data.sentiment_analysis && data.sentiment_analysis.sentiment_analysis) {
+                const analysis = data.sentiment_analysis.sentiment_analysis;
+                const score = analysis.sentiment_score || 0;
+                const label = analysis.sentiment_label || 'unknown';
+                
+                let scoreColor = '#6c757d';
+                if (score > 0.3) scoreColor = '#28a745';
+                else if (score < -0.3) scoreColor = '#dc3545';
+                
+                html += `
+                    <div class="analysis-summary">
+                        <div class="summary-item">
+                            <strong>Overall Sentiment:</strong> 
+                            <span style="color: ${scoreColor}; font-weight: bold;">${label.toUpperCase()} (${score.toFixed(2)})</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add search results summary
+            if (data.search_results && data.search_results.total_results) {
+                html += `
+                    <div class="analysis-summary">
+                        <div class="summary-item">
+                            <strong>Total Mentions Found:</strong> ${data.search_results.total_results}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Add report if available
+            if (data.report) {
+                html += `
+                    <div class="report-section">
+                        <h5>Generated Report</h5>
+                        <div class="report-content">${data.report.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/## (.*?)/g, '<h6>$1</h6>')}</div>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+            return html;
         }
 
         function updateStats() {
