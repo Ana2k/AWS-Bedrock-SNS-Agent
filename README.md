@@ -7,8 +7,8 @@ A comprehensive AI-powered brand monitoring system that tracks brand mentions ac
 ## 🏆 Hackathon Achievement : 2nd Runner Ups
 
 - **⏱️ Development Time**: 4 hours on Day 1
-- **🎨 Frontend**: Vibe-coded with modern UI/UX
-- **🚀 Deployment**: Fully deployed and production-ready
+- **🎨 Frontend**: Django frontend
+- **🚀 Deployment**: Locally deployed, ran out of time before integrating Docker.
 - **🤖 AI Integration**: Amazon Bedrock Agentic AI with Claude 3.5 Sonnet
 - **📊 Real Results**: Working system with live sentiment analysis
 
