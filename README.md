@@ -4,7 +4,7 @@
 
 A comprehensive AI-powered brand monitoring system that tracks brand mentions across multiple platforms, analyzes sentiment, and generates actionable reports using **Amazon Agentic Bedrock AI** and CrewAI framework.
 
-## 🏆 Hackathon Achievement
+## 🏆 Hackathon Achievement : 2nd Runner Ups
 
 - **⏱️ Development Time**: 4 hours on Day 1
 - **🎨 Frontend**: Vibe-coded with modern UI/UX
@@ -97,7 +97,6 @@ graph TB
 1. **Search** → Find brand mentions across platforms
 2. **Analyze** → AI sentiment analysis with Amazon Bedrock
 3. **Report** → Generate actionable insights
-4. **Display** → Real-time dashboard with results
 
 **Features**: Rate limiting, fallback systems, multi-platform support
 
@@ -130,7 +129,6 @@ This real-time dashboard demonstrates the **Amazon Agentic Bedrock AI** system i
 - **Mentions Found**: 10 results
 - **Sentiment**: POSITIVE (0.80 score)
 - **Confidence**: 90.0%
-- **Status**: ✅ All systems operational
 
 **Real Results**: The system successfully analyzed Product Hunt's brand mentions and generated actionable insights with high confidence AI analysis.
 
@@ -180,11 +178,11 @@ python enhanced_app.py
 - `data_storage.py` - Data management
 - `test-demo/` - Test suite
 
-## 🎯 Success Metrics
+<!-- ## 🎯 Success Metrics -->
 
-### Demo Completion Status
+<!-- ### Demo Completion Status
 - ✅ **DEMO COMPLETED SUCCESSFULLY!**
-- ✅ All components working correctly
+- ✅ All components worked correctly
 - ✅ Rate limiting protection active
 - ✅ Sentiment analysis functional
 - ✅ Report generation working
@@ -193,9 +191,9 @@ python enhanced_app.py
 - **Search Success Rate**: 100% (with fallbacks)
 - **Sentiment Analysis Accuracy**: High confidence (0.9)
 - **Report Generation**: Complete with recommendations
-- **Error Handling**: Graceful degradation
+- **Error Handling**: Graceful degradation -->
 
-## 🔮 Future Enhancements
+<!-- ## 🔮 Future Enhancements
 
 1. **Real-time Monitoring**: Continuous brand monitoring
 2. **Alert System**: Notifications for sentiment changes
@@ -210,10 +208,10 @@ For issues or questions:
 1. Check the test results in `test-demo/` directory
 2. Review the demo output for component status
 3. Verify AWS and BrightData credentials
-4. Check network connectivity for external services
+4. Check network connectivity for external services -->
 
 ---
 
-**System Status**: ✅ Production Ready
-**Last Updated**: 2025-09-15
-**Version**: 1.0.0
+![AWS Startup Loft Group Image](aws_group_photo.jpg)
+
+
