@@ -112,16 +112,10 @@ This real-time dashboard demonstrates the **Amazon Agentic Bedrock AI** system i
 
 - **🔍 Brand Search Results**: The system successfully found and displayed brand mentions for "Product Hunt" with detailed URLs and snippets
 - **🧠 AI-Powered Sentiment Analysis**: Shows a **POSITIVE sentiment score of 0.80** with **90.0% confidence**, demonstrating the AI's ability to analyze brand perception
-- **📊 Comprehensive Reporting**: Displays a complete JSON-formatted brand analysis report with structured data
-- **⚡ Real-Time Processing**: All three panels (Search Results, Sentiment Analysis, Full Report) are populated simultaneously, showing the system's efficiency
-- **🎯 Multi-Platform Coverage**: Results include mentions from various sources including Product Hunt's official website and social media platforms
-- **🔄 Automated Workflow**: The system automatically processes search results through sentiment analysis to generate actionable insights
+- **Comprehensive Reporting**: Displays a complete JSON-formatted brand analysis report with structured data
+<!-- - **Real-Time Processing**: All three panels (Search Results, Sentiment Analysis, Full Report) are populated simultaneously, showing the system's efficiency -->
+- **Multi-Platform Coverage**: Results include mentions from various sources including Product Hunt's official website and social media platforms
 
-**Key Features Demonstrated:**
-- **Intelligent Analysis**: AI understands context and provides meaningful sentiment scores
-- **Structured Output**: Clean, organized presentation of complex brand data
-- **User-Friendly Interface**: Easy-to-read dashboard with clear visual indicators
-- **Comprehensive Coverage**: Multiple data sources and analysis types in one view
 
 ## 📊 Live Demo Results
 
@@ -134,12 +128,12 @@ This real-time dashboard demonstrates the **Amazon Agentic Bedrock AI** system i
 
 ## 🧪 Testing & Validation
 
-✅ **All Components Tested & Working:**
+<!-- ✅ **All Components Tested & Working:**
 - Brand search functionality
 - AI sentiment analysis with Bedrock
 - Report generation
 - Rate limiting protection
-- Web frontend interface
+- Web frontend interface -->
 
 **Test Suite**: Comprehensive testing in `test-demo/` directory
 
