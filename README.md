@@ -1,5 +1,7 @@
 # Brand Monitoring System - AWS Agentic AI Hackathon
 
+Best way to understand the project structure : DeepWiki AWS Agentic Bedrock. [https://deepwiki.com/Ana2k/AWS-Bedrock-SNS-Agent]
+
 🚀 **Social Media Brand monitor AWS Agentic AI 1 Day Hackathon Day 1 in just 4 hours!**
 
 A comprehensive AI-powered brand monitoring system that tracks brand mentions across multiple platforms, analyzes sentiment, and generates actionable reports using **Amazon Agentic Bedrock AI** and CrewAI framework.
